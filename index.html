@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where in the World Are the Kendralls?</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .face-container {
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+
+        .face-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .text-container {
+            text-align: center;
+        }
+
+        .main-text {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .emoji {
+            font-size: 3rem;
+            margin-left: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .main-text {
+                font-size: 2.5rem;
+            }
+            
+            .face-container {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Kendall's face (left) -->
+        <div class="face-container">
+            <img id="kendall-neutral" class="face-image" src="https://ik.imagekit.io/g9hfvbztdn/kendall_neutral.png?updatedAt=1749881073553" alt="Kendall neutral">
+            <img id="kendall-sad" class="face-image" src="https://ik.imagekit.io/g9hfvbztdn/kendall_sad.png?updatedAt=1749881083220" alt="Kendall sad" style="opacity: 0;">
+        </div>
+
+        <!-- Main text -->
+        <div class="text-container">
+            <h1 class="main-text">Not here<span class="emoji">😢</span></h1>
+        </div>
+
+        <!-- Kendra's face (right) -->
+        <div class="face-container">
+            <img id="kendra-neutral" class="face-image" src="https://ik.imagekit.io/g9hfvbztdn/kendra_neutral.png?updatedAt=1749881090814" alt="Kendra neutral">
+            <img id="kendra-sad" class="face-image" src="https://ik.imagekit.io/g9hfvbztdn/kendra_sad.png?updatedAt=1749881095420" alt="Kendra sad" style="opacity: 0;">
+        </div>
+    </div>
+
+    <script>
+        // Get all the face images
+        const kendallNeutral = document.getElementById('kendall-neutral');
+        const kendallSad = document.getElementById('kendall-sad');
+        const kendraNeutral = document.getElementById('kendra-neutral');
+        const kendraSad = document.getElementById('kendra-sad');
+
+        let showingNeutral = true;
+
+        function swapFaces() {
+            if (showingNeutral) {
+                // Show sad faces
+                kendallNeutral.style.opacity = '0';
+                kendallSad.style.opacity = '1';
+                kendraNeutral.style.opacity = '0';
+                kendraSad.style.opacity = '1';
+            } else {
+                // Show neutral faces
+                kendallNeutral.style.opacity = '1';
+                kendallSad.style.opacity = '0';
+                kendraNeutral.style.opacity = '1';
+                kendraSad.style.opacity = '0';
+            }
+            showingNeutral = !showingNeutral;
+        }
+
+        // Start the face swapping every second
+        setInterval(swapFaces, 1000);
+    </script>
+</body>
+</html>`
